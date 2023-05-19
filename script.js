@@ -55,15 +55,19 @@ function passLength() {
 function passCharacters() { // creates the prompts and arrays for the password
   if (confirm("Numbers?") ) {
     newPassword.push(fetchRandomCharacter(passNumbers))
+    passChoices.push(fetchRandomCharacter(passNumbers))
   }
   if (confirm("Special Characters?") ) {
     newPassword.push(fetchRandomCharacter(passSpec))
+    passChoices.push(fetchRandomCharacter(passSpec))
   }
   if (confirm("Upper case letters?") ) {
     newPassword.push(fetchRandomCharacter(upperLetters))
+    passChoices.push(fetchRandomCharacter(upperLetters))
   }
   if (confirm("Lower case letters?") ) {
     newPassword.push(fetchRandomCharacter(lowerLetters))
+    passChoices.push(fetchRandomCharacter(lowerLetters))
   }
 }
 
