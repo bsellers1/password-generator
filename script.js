@@ -31,28 +31,6 @@ var passNumbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
 var passSpec = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", ];
 
-function passLength() {
-  var pLength = prompt("What number between 8 and 128 would you like?")
-
-  if (pLength < 8 || pLength > 128) {
-    alert("Pick a number between 8 and 128 please.");
-    passLength();
-  }
-
-  if (isNaN(pLength)) {
-  alert("Select a valid number please.")
-  passLength();
-  }
-
- passCharacters();
-  while (newPassword.length < passLength) {
-    var random = fetchRandomCharacter(passChoices);
-    newPassword.push(random)
-  }
-
-  return newPassword.join("");
-}
-
 function passCharacters() { // creates the prompts and arrays for the password
   if (confirm("Numbers?")) {
     newPassword.push(fetchRandomCharacter(passNumbers))
@@ -76,6 +54,27 @@ function passCharacters() { // creates the prompts and arrays for the password
 
 }
 
+function passLength() {
+  var pLength = prompt("What number between 8 and 128 would you like?")
+
+  if (pLength < 8 || pLength > 128) {
+    alert("Pick a number between 8 and 128 please.");
+    passLength();
+  }
+
+  if (isNaN(pLength)) {
+  alert("Select a valid number please.")
+  passLength();
+  }
+
+ passCharacters();
+  while (newPassword.length < passLength) {
+    var random = fetchRandomCharacter(passChoices);
+    newPassword.push(random)
+  }
+
+  return newPassword.join("");
+}
 
 function genPassword() {
   newPassword = [];
