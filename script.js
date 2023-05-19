@@ -9,7 +9,9 @@ function writePassword() {
 }
 
 function genPassword() {
-  newPassword();
+  newPassword = [];
+  passChoices = [];
+  return passLength();
 }
 
 // Add event listener to generate button
@@ -18,10 +20,10 @@ generateBtn.addEventListener("click", writePassword);
 // picks a random one in the array
 function fetchRandomCharacter() {
   var random = Math.floor(Math.random() * Array.length)
-  return Array;
+  return Array[randomIndex];
 }
 // all the variabls for the password
-var passCharacters = [];
+var newPassword = [];
 
 var passChoices = [];
 
