@@ -3,9 +3,11 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  // alert("working");
+
   var password = genPassword();
   var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
 }
 
 // Add event listener to generate button
@@ -37,6 +39,11 @@ function passLength() {
     passLength();
   }
 
+  if (isNaN(pLength)) {
+  alert("Select a valid number please.")
+  passLength();
+  }
+
  passCharacters();
   while (newPassword.length < passLength) {
     var random = fetchRandomCharacter(passChoices);
@@ -51,18 +58,22 @@ function passCharacters() { // creates the prompts and arrays for the password
     newPassword.push(fetchRandomCharacter(passNumbers))
     passChoices.push(fetchRandomCharacter(...passNumbers))
   }
+
   if (confirm("Special Characters?")) {
     newPassword.push(fetchRandomCharacter(passSpec))
     passChoices.push(fetchRandomCharacter(...passSpec))
   }
+
   if (confirm("Upper case letters?")) {
     newPassword.push(fetchRandomCharacter(upperLetters))
     passChoices.push(fetchRandomCharacter(...upperLetters))
   }
+
   if (confirm("Lower case letters?")) {
     newPassword.push(fetchRandomCharacter(lowerLetters))
     passChoices.push(fetchRandomCharacter(...lowerLetters))
   }
+
 }
 
 
