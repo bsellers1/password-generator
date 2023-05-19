@@ -8,21 +8,15 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 }
 
-function genPassword() {
-  newPassword = [];
-  passChoices = [];
-  return passLength();
-}
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 // picks a random one in the array
 function fetchRandomCharacter() {
   var random = Math.floor(Math.random() * Array.length)
-  return Array[randomIndex];
+  return Array[random];
 }
-// all the variabls for the password
+// all the variables for the password
 var newPassword = [];
 
 var passChoices = [];
@@ -44,30 +38,36 @@ function passLength() {
   }
 
  passCharacters();
-  while (newPassword.length < passwordLength) {
-    var passCharacters = fetchRandomCharacter(passChoices);
-    newPassword.push(passCharacters)
+  while (newPassword.length < passLength) {
+    var random = fetchRandomCharacter(passChoices);
+    newPassword.push(random)
   }
 
   return newPassword.join("");
 }
 
 function passCharacters() { // creates the prompts and arrays for the password
-  if (confirm("Numbers?") ) {
+  if (confirm("Numbers?")) {
     newPassword.push(fetchRandomCharacter(passNumbers))
-    passChoices.push(fetchRandomCharacter(passNumbers))
+    passChoices.push(fetchRandomCharacter(...passNumbers))
   }
-  if (confirm("Special Characters?") ) {
+  if (confirm("Special Characters?")) {
     newPassword.push(fetchRandomCharacter(passSpec))
-    passChoices.push(fetchRandomCharacter(passSpec))
+    passChoices.push(fetchRandomCharacter(...passSpec))
   }
-  if (confirm("Upper case letters?") ) {
+  if (confirm("Upper case letters?")) {
     newPassword.push(fetchRandomCharacter(upperLetters))
-    passChoices.push(fetchRandomCharacter(upperLetters))
+    passChoices.push(fetchRandomCharacter(...upperLetters))
   }
-  if (confirm("Lower case letters?") ) {
+  if (confirm("Lower case letters?")) {
     newPassword.push(fetchRandomCharacter(lowerLetters))
-    passChoices.push(fetchRandomCharacter(lowerLetters))
+    passChoices.push(fetchRandomCharacter(...lowerLetters))
   }
 }
 
+
+function genPassword() {
+  newPassword = [];
+  passChoices = [];
+  return passLength();
+}
